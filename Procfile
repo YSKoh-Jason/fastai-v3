@@ -1,1 +1,1 @@
-web: uvicorn server:trashclassifier
+web: uvicorn app:trashclassifier
