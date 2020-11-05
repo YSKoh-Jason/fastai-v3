@@ -42,7 +42,10 @@ async def setup_learner():
         else:
             raise
 
-asyncio.run(setup_learner())
+loop = asyncio.get_event_loop()
+tasks = [asyncio.ensure_future(setup_learner())]
+learn = loop.run_until_complete(asyncio.gather(*tasks))[0]
+loop.close()
 
 @app.route('/')
 async def homepage(request):
