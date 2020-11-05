@@ -8,6 +8,8 @@ from starlette.applications import Starlette
 from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import HTMLResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
+import nest_asyncio
+nest_asyncio.apply()
 
 export_file_url = 'https://www.googleapis.com/drive/v3/files/1SlV6uZQ03bjcR8JOgOIIDp5HsEUPp4pJ?alt=media&key=AIzaSyCMd4BwxfTK67vBja92IOaExWy_eORz5Hw'
 export_file_name = 'export.pkl'
