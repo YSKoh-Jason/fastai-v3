@@ -8,8 +8,6 @@ from starlette.applications import Starlette
 from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import HTMLResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
-import nest_asyncio
-nest_asyncio.apply()
 
 export_file_url = 'https://www.googleapis.com/drive/v3/files/1SlV6uZQ03bjcR8JOgOIIDp5HsEUPp4pJ?alt=media&key=AIzaSyCMd4BwxfTK67vBja92IOaExWy_eORz5Hw'
 export_file_name = 'export.pkl'
@@ -44,12 +42,7 @@ async def setup_learner():
         else:
             raise
 
-
-loop = asyncio.get_event_loop()
-tasks = [asyncio.ensure_future(setup_learner())]
-learn = loop.run_until_complete(asyncio.gather(*tasks))[0]
-loop.close()
-
+asyncio.run(setup_learner())
 
 @app.route('/')
 async def homepage(request):
